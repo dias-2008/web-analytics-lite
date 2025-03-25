@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics Dashboard</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recent Visits</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Location</th>
+                <th>Browser</th>
+                <th>OS</th>
+                <th>Device</th>
+                <th>Screen</th>
+                <th>Path</th>
+                <th>Referrer</th>
+                <th>Duration (s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for visit in visits %}
+            <tr>
+                <td>{{ visit.timestamp }}</td>
+                <td>{{ visit.city }}, {{ visit.country }}</td>
+                <td>{{ visit.browser }}</td>
+                <td>{{ visit.os }}</td>
+                <td>{{ visit.device_type }}</td>
+                <td>{{ visit.screen_resolution }}</td>
+                <td>{{ visit.url_path }}</td>
+                <td>{{ visit.referrer or 'Direct' }}</td>
+                <td>{{ visit.session_duration }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
